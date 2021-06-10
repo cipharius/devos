@@ -124,6 +124,13 @@
             };
             suites = with profiles; rec {
               base = [ core users.nixos users.root ];
+              workstation = [
+                core
+                network.networkmanager
+                users.cipharius
+                users.root
+              ];
+              laptop = workstation;
             };
           };
         };

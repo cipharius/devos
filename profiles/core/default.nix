@@ -151,4 +151,6 @@ in
 
   services.earlyoom.enable = true;
 
+  # Preferably use passwords from users definitions
+  users.mutableUsers = lib.mkDefault false;
 }
