@@ -60,7 +60,6 @@
     , nur
     , agenix
     , nvfetcher
-    , deploy
     , ...
     } @ inputs:
     digga.lib.mkFlake
@@ -101,10 +100,11 @@
         nixos = {
           imports = [ (digga.lib.importers.overlays ./overlays) ];
           overlays = [
-            ./pkgs/default.nix
-            pkgs.overlay # for `srcs`
             nur.overlay
             agenix.overlay
+            nvfetcher.overlay
+            (final: prev: { nvfetcher-bin = nvfetcher.defaultPackage.${final.system}; })
+            ./pkgs/default.nix
           ];
         };
         latest = { };

@@ -88,4 +88,4 @@ DevOS is licensed under the [MIT License][mit].
 [nixpkgs]: https://github.com/NixOS/nixpkgs
 [nvfetcher]: https://github.com/berberman/nvfetcher
 [please]: https://github.com/nrdxp/devos/tree/nrd
-[matrix]: https://matrix.to/#/#devos:nixos.org
+[toc]: https://github.com/divnix/devos/blob/core/flake.nix
