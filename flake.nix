@@ -99,19 +99,40 @@
         ];
 
         nixos = {
-          hostDefaults = {
-            system = "x86_64-linux";
-            channelName = "nixos";
-            imports = [ (digga.lib.importExportableModules ./modules) ];
-            modules = [
-              { lib.our = self.lib; }
-              digga.nixosModules.bootstrapIso
-              digga.nixosModules.nixConfig
-              home.nixosModules.home-manager
-              agenix.nixosModules.age
-              bud.nixosModules.bud
-            ];
-          };
+          imports = [ (digga.lib.importers.overlays ./overlays) ];
+          overlays = [
+            ./pkgs/default.nix
+            pkgs.overlay # for `srcs`
+            nur.overlay
+            agenix.overlay
+          ];
+        };
+        latest = { };
+      };
+
+      lib = import ./lib { lib = digga.lib // nixos.lib; };
+
+      sharedOverlays = [
+        (final: prev: {
+          __dontExport = true;
+          lib = prev.lib.extend (lfinal: lprev: {
+            our = self.lib;
+          });
+        })
+      ];
+
+      nixos = {
+        hostDefaults = {
+          system = "x86_64-linux";
+          channelName = "nixos";
+          imports = [ (digga.lib.importers.modules ./modules) ];
+          externalModules = [
+            { lib.our = self.lib; }
+            ci-agent.nixosModules.agent-profile
+            home.nixosModules.home-manager
+            agenix.nixosModules.age
+          ];
+        };
 
           imports = [ (digga.lib.importHosts ./hosts) ];
           hosts = {
@@ -138,15 +159,15 @@
             };
           };
         };
+      };
 
-        home = {
-          imports = [ (digga.lib.importExportableModules ./users/modules) ];
-          modules = [ ];
-          importables = rec {
-            profiles = digga.lib.rakeLeaves ./users/profiles;
-            suites = with profiles; rec {
-              base = [ direnv git fish ];
-            };
+      home = {
+        imports = [ (digga.lib.importers.modules ./users/modules) ];
+        externalModules = [ ];
+        importables = rec {
+          profiles = digga.lib.importers.rakeLeaves ./users/profiles;
+          suites = with profiles; rec {
+            base = [ direnv git fish ];
           };
           users = {
             nixos = { suites, ... }: { imports = suites.base; };
