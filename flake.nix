@@ -130,7 +130,9 @@
                 users.cipharius
                 users.root
               ];
-              laptop = workstation;
+              laptop = workstation ++ [
+                profiles.laptop
+              ];
             };
           };
         };

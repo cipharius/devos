@@ -1,7 +1,9 @@
 { self, ... }:
 {
-  home-manager.users.cipharius = { suites, ... }: {
-    imports = suites.base;
+  home-manager.users.cipharius = { suites, profiles, ... }: {
+    imports = suites.base ++ (with profiles; [
+      xmonad
+    ]);
   };
 
   age.secrets = {
