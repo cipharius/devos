@@ -3,5 +3,6 @@
     ./xmobar
     ./xmonad
     ./kitty
+    ./qutebrowser
   ];
 }

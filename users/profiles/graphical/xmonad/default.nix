@@ -14,7 +14,6 @@
       kitty
       libnotify
       playerctl
-      qutebrowser
     ];
 
     file = {
