@@ -2,5 +2,6 @@
   imports = [
     ./xmobar
     ./xmonad
+    ./kitty
   ];
 }
