@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{ nixosConfig, pkgs, ... }: {
   home.packages = with pkgs; [ xmobar ];
   home.file = {
-    ".xmobarrc".source = ./xmobarrc;
+    ".xmobarrc".text = import ./xmobarrc.nix { inherit nixosConfig; };
   };
 }
