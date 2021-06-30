@@ -13,7 +13,7 @@ let
   ];
 in
 {
-  "cipharius.age".publicKeys = allKeys;
+  "valts.age".publicKeys = allKeys;
   "root.age".publicKeys = allKeys;
 }
 
