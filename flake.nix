@@ -126,7 +126,9 @@
               base = [ core users.nixos users.root ];
               workstation = [
                 core
-                network.networkmanager
+                cli
+                network.common
+                graphical.common
                 users.cipharius
                 users.root
               ];
