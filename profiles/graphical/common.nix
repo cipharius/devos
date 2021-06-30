@@ -1,8 +1,19 @@
-{ ... }: {
+{ pkgs, lib, ... }: {
   imports = [ ./xserver ];
 
+  nixpkgs.config.allowUnfreeWhitelist = [
+    "spotify"
+    "spotify-unwrapped"
+    "teams"
+    "zoom"
+    "faac" # required for zoom
+    "steam"
+    "steam-original"
+    "steam-runtime"
+  ];
+
   # Dump of graphical packages without profiles
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     chromium
     feh
     gimp

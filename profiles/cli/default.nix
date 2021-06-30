@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   # Dump of CLI packages without profiles
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     ag
     curl
     dnsutils
