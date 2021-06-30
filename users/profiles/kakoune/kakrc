@@ -60,6 +60,12 @@ hook global WinSetOption "filetype=kak" %{
     window user e %{%: eval %reg{.}<ret>}
 }
 
+hook global ModuleLoaded "kitty" %{
+  # Let WM handle terminals
+  unalias global terminal kitty-terminal
+  alias global terminal x11-terminal
+}
+
 # COMMANDS #
 
 define-command split -params 0 -docstring \
