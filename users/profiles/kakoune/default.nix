@@ -9,6 +9,8 @@
         ];
       };
     })
+
+    lf # For filetree script
   ];
 
   home.file = {
