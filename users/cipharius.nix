@@ -3,6 +3,7 @@
   home-manager.users.cipharius = { suites, profiles, ... }: {
     imports = suites.base ++ (with profiles; [
       graphical.common
+      kakoune
     ]);
   };
 
