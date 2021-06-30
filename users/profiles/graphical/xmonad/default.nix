@@ -14,6 +14,8 @@
       kitty
       libnotify
       playerctl
+      acpi
+      maim
     ];
 
     file = {
