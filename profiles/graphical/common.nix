@@ -1,7 +1,7 @@
 { pkgs, lib, ... }: {
   imports = [ ./xserver ];
 
-  nixpkgs.config.allowUnfreeWhitelist = [
+  nixpkgs.allowUnfreeWhitelist = [
     "spotify"
     "spotify-unwrapped"
     "teams"

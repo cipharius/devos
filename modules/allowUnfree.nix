@@ -9,14 +9,17 @@ let
     else throw "Cannot figure out name of: ${drv}";
 in
 {
-  nixpkgs.config = rec {
-    allowUnfreePredicate = lib.mkDefault (pkg:
-      builtins.elem (getName pkg) allowUnfreeWhitelist
-    );
-
-    allowUnfreeWhitelist = lib.mkOption {
+  options = {
+    nixpkgs.allowUnfreeWhitelist = lib.mkOption {
+      default = [ ];
       description = "A whitelist of allowed unfree packages";
       type = with lib.types; listOf string;
     };
+  };
+
+  config = {
+    nixpkgs.config.allowUnfreePredicate = (pkg:
+      builtins.elem (getName pkg) config.nixpkgs.allowUnfreeWhitelist
+    );
   };
 }
