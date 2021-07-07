@@ -1,6 +1,8 @@
 { suites, lib, profiles, ... }:
 {
-  imports = suites.laptop;
+  imports = suites.laptop ++ (with profiles; [
+    docker
+  ]);
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/2c251e55-0255-4ff4-89aa-07a5127b0748";

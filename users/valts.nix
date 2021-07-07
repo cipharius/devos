@@ -15,7 +15,7 @@
   users.users.valts = {
     uid = 1000;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "docker" ];
     passwordFile = "/run/secrets/valts";
   };
 }
