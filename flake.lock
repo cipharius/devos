@@ -582,6 +582,9 @@
         "latest": "latest_2",
         "nixos": "nixos",
         "nixos-hardware": "nixos-hardware",
+        "nixpkgs": [
+          "nixos"
+        ],
         "nur": "nur",
         "nvfetcher": "nvfetcher"
       }
