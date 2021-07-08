@@ -60,6 +60,7 @@
     , nur
     , agenix
     , nvfetcher
+    , deploy
     , ...
     } @ inputs:
     digga.lib.mkFlake
@@ -103,7 +104,7 @@
             nur.overlay
             agenix.overlay
             nvfetcher.overlay
-            (final: prev: { nvfetcher-bin = nvfetcher.defaultPackage.${final.system}; })
+            deploy.overlay
             ./pkgs/default.nix
           ];
         };
@@ -131,6 +132,7 @@
             ci-agent.nixosModules.agent-profile
             home.nixosModules.home-manager
             agenix.nixosModules.age
+            (bud.nixosModules.bud bud')
           ];
         };
 
@@ -174,20 +176,24 @@
           }; # digga.lib.importers.rakeLeaves ./users/hm;
         };
 
-        devshell = ./shell;
+        devshell.modules = [ (import ./shell bud') ];
 
         homeConfigurations = digga.lib.mkHomeConfigurations self.nixosConfigurations;
 
         deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations { };
 
-        defaultTemplate = self.templates.bud;
-        templates.bud.path = ./.;
-        templates.bud.description = "bud template";
+      defaultTemplate = self.templates.bud;
+      templates.bud.path = ./.;
+      templates.bud.description = "bud template";
 
       }
     //
     {
       budModules = { devos = import ./bud; };
+    }
+    //
+    {
+      budModules = { devos = import ./pkgs/bud; };
     }
   ;
 }
