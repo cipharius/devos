@@ -24,9 +24,10 @@
 
       darwin.url = "github:LnL7/nix-darwin";
       darwin.inputs.nixpkgs.follows = "latest";
-
-      deploy.follows = "digga/deploy";
-
+      home.url = "github:nix-community/home-manager/release-21.05";
+      home.inputs.nixpkgs.follows = "nixos";
+      # naersk.url = "github:nmattia/naersk";
+      # naersk.inputs.nixpkgs.follows = "latest";
       agenix.url = "github:ryantm/agenix";
       agenix.inputs.nixpkgs.follows = "latest";
 
