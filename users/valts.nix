@@ -5,6 +5,7 @@
       graphical.common
       kakoune
       pijul
+      smos
     ]);
   };
 
