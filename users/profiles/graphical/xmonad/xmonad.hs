@@ -117,7 +117,7 @@ myKeys = let leader = "M-<Space>" in
 
     , (leader<>" a b",            spawn myBrowser)
     , (leader<>" a t",            spawn myTerminal)
-    , (leader<>" a e",            spawn $ myTerminal <> " $EDITOR")
+    , (leader<>" a e",            spawn $ myTerminal <> " kak")
     , (leader<>" a m",            spawn "spotify")
     , (leader<>" a s",            spawn $ myTerminal <> " smos")
 
