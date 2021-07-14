@@ -119,6 +119,7 @@ myKeys = let leader = "M-<Space>" in
     , (leader<>" a t",            spawn myTerminal)
     , (leader<>" a e",            spawn $ myTerminal <> " $EDITOR")
     , (leader<>" a m",            spawn "spotify")
+    , (leader<>" a s",            spawn $ myTerminal <> " smos")
 
     , (leader<>" l l",            DWs.selectWorkspace myPrompt)
     , (leader<>" l L",            DWs.addWorkspacePrompt myPrompt)
