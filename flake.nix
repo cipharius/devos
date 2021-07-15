@@ -10,10 +10,9 @@
       nixos.url = "github:nixos/nixpkgs/release-21.05";
       latest.url = "github:nixos/nixpkgs/nixos-unstable";
 
-      digga.url = "github:divnix/digga";
+      digga.url = "github:divnix/digga/develop";
       digga.inputs.nixpkgs.follows = "nixos";
       digga.inputs.nixlib.follows = "nixos";
-      digga.inputs.home-manager.follows = "home";
 
       bud.url = "github:divnix/bud";
       bud.inputs.nixpkgs.follows = "nixos";
@@ -24,17 +23,22 @@
 
       darwin.url = "github:LnL7/nix-darwin";
       darwin.inputs.nixpkgs.follows = "latest";
-      home.url = "github:nix-community/home-manager/release-21.05";
-      home.inputs.nixpkgs.follows = "nixos";
-      # naersk.url = "github:nmattia/naersk";
-      # naersk.inputs.nixpkgs.follows = "latest";
+
+      deploy.follows = "digga/deploy";
+
       agenix.url = "github:ryantm/agenix";
       agenix.inputs.nixpkgs.follows = "latest";
 
       nvfetcher.url = "github:berberman/nvfetcher";
       nvfetcher.inputs.nixpkgs.follows = "latest";
       nvfetcher.inputs.flake-compat.follows = "digga/deploy/flake-compat";
-      nvfetcher.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
+      nvfetcher.inputs.flake-utils.follows = "digga/utils/flake-utils";
+
+      ci-agent.url = "github:hercules-ci/hercules-ci-agent";
+      ci-agent.inputs.nix-darwin.follows = "darwin";
+      ci-agent.inputs.nixos-20_09.follows = "nixos";
+      ci-agent.inputs.nixos-unstable.follows = "latest";
+      ci-agent.inputs.flake-compat.follows = "digga/deploy/flake-compat";
 
       naersk.url = "github:nmattia/naersk";
       naersk.inputs.nixpkgs.follows = "latest";
@@ -46,7 +50,7 @@
       nixpkgs.follows = "nixos";
       nixlib.follows = "digga/nixlib";
       blank.follows = "digga/blank";
-      flake-utils-plus.follows = "digga/flake-utils-plus";
+      utils.follows = "digga/utils";
       flake-utils.follows = "digga/flake-utils";
       # end ANTI CORRUPTION LAYER
     };
