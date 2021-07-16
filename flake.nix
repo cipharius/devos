@@ -143,6 +143,42 @@
         };
 
           imports = [ (digga.lib.importHosts ./hosts) ];
+=======
+              deploy.overlay
+              ./pkgs/default.nix
+            ];
+          };
+          latest = { };
+        };
+
+        lib = import ./lib { lib = digga.lib // nixos.lib; };
+
+        sharedOverlays = [
+          (final: prev: {
+            __dontExport = true;
+            lib = prev.lib.extend (lfinal: lprev: {
+              our = self.lib;
+            });
+          })
+        ];
+
+        nixos = {
+          hostDefaults = {
+            system = "x86_64-linux";
+            channelName = "nixos";
+            imports = [ (digga.lib.importers.modules ./modules) ];
+            externalModules = [
+              { lib.our = self.lib; }
+              digga.nixosModules.nixConfig
+              ci-agent.nixosModules.agent-profile
+              home.nixosModules.home-manager
+              agenix.nixosModules.age
+              (bud.nixosModules.bud bud')
+            ];
+          };
+
+          imports = [ (digga.lib.importers.hosts ./hosts) ];
+>>>>>>> c4ebb53 (fmt)
           hosts = {
             /* set host specific properties here */
             NixOS = { };
@@ -181,10 +217,6 @@
             nixos = { suites, ... }: { imports = suites.base; };
           }; # digga.lib.importers.rakeLeaves ./users/hm;
         };
-        users = {
-          nixos = { suites, ... }: { imports = suites.base; };
-        }; # digga.lib.importers.rakeLeaves ./users/hm;
-      };
 
         devshell.modules = [ (import ./shell bud') ];
 
@@ -192,15 +224,11 @@
 
         deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations { };
 
-      defaultTemplate = self.templates.bud;
-      templates.bud.path = ./.;
-      templates.bud.description = "bud template";
+        defaultTemplate = self.templates.bud;
+        templates.bud.path = ./.;
+        templates.bud.description = "bud template";
 
       }
-    //
-    {
-      budModules = { devos = import ./bud; };
-    }
     //
     {
       budModules = { devos = import ./pkgs/bud; };
