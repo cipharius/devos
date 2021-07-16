@@ -22,14 +22,18 @@ Also, have a look at [_flake.nix_](./flake.nix). If anything is not immediately
 discoverable via "[`digga`][digga]'s [`mkFlake`][mk-flake],
 please file a bug report.
 
-### Status: Beta
-Although this project has already matured quite a bit, especially through
-recent outfactoring of [`digga`][digga], a fair amount of api polishing is still
-expected. There are unstable versions (0._x_._x_) to help users keep track
-of changes and progress, and a [`develop`](https://github.com/divnix/devos/tree/develop) branch for the brave 😜
+## Motivation
+NixOS provides an amazing abstraction to manage our environment, but that new
+power can sometimes bring feelings of overwhelm and confusion. Having a turing
+complete system can easily lead to unlimited complexity if we do it wrong.
+Instead, we should have a community consensus on how to manage a NixOS system
+and its satellite projects, from which best practices can evolve.
 
-## In the Wild
-* The original [authors][please]
+___The future is declarative! 🎉___
+
+## Examples in the Wild
+The author maintains his own branch, so you can take inspiration, direction, or
+make critical comments about the [code][please]. 😜
 
 ## Shoulders
 This work does not reinvent the wheel. It stands on the [shoulders of the
