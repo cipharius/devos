@@ -33,7 +33,7 @@
       nvfetcher.url = "github:berberman/nvfetcher";
       nvfetcher.inputs.nixpkgs.follows = "latest";
       nvfetcher.inputs.flake-compat.follows = "digga/deploy/flake-compat";
-      nvfetcher.inputs.flake-utils.follows = "digga/utils/flake-utils";
+      nvfetcher.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
       ci-agent.url = "github:hercules-ci/hercules-ci-agent";
       ci-agent.inputs.nix-darwin.follows = "darwin";
@@ -51,7 +51,7 @@
       nixpkgs.follows = "nixos";
       nixlib.follows = "digga/nixlib";
       blank.follows = "digga/blank";
-      utils.follows = "digga/utils";
+      flake-utils-plus.follows = "digga/flake-utils-plus";
       flake-utils.follows = "digga/flake-utils";
       # end ANTI CORRUPTION LAYER
     };
@@ -143,7 +143,6 @@
         };
 
           imports = [ (digga.lib.importHosts ./hosts) ];
-=======
               deploy.overlay
               ./pkgs/default.nix
             ];
@@ -166,7 +165,7 @@
           hostDefaults = {
             system = "x86_64-linux";
             channelName = "nixos";
-            imports = [ (digga.lib.importers.modules ./modules) ];
+            imports = [ (digga.lib.importModules ./modules) ];
             externalModules = [
               { lib.our = self.lib; }
               digga.nixosModules.nixConfig
@@ -177,8 +176,7 @@
             ];
           };
 
-          imports = [ (digga.lib.importers.hosts ./hosts) ];
->>>>>>> c4ebb53 (fmt)
+          imports = [ (digga.lib.importHosts ./hosts) ];
           hosts = {
             /* set host specific properties here */
             NixOS = { };
@@ -209,7 +207,9 @@
         imports = [ (digga.lib.importers.modules ./users/modules) ];
         externalModules = [ ];
         importables = rec {
-          profiles = digga.lib.importers.rakeLeaves ./users/profiles;
+          profiles = digga.lib.rakeLeaves ./profiles // {
+            users = digga.lib.rakeLeaves ./users;
+          };
           suites = with profiles; rec {
             base = [ direnv git fish ];
           };
