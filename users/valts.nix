@@ -3,6 +3,7 @@
   home-manager.users.valts = { suites, profiles, ... }: {
     imports = suites.base ++ (with profiles; [
       graphical.common
+      graphical.godot
       kakoune
       pijul
       smos
