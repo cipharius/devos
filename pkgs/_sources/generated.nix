@@ -13,4 +13,16 @@
       sha256 = "1b7xi8c2drbwzfz70czddc4j33s7g1alirv12dwl91hbqxifx8qs";
     };
   };
+  zk = {
+    pname = "zk";
+    version = "977625bb3d6728efdd7ea8d2376aed238af85972";
+    src = fetchgit {
+      url = "https://github.com/mickael-menu/zk";
+      rev = "977625bb3d6728efdd7ea8d2376aed238af85972";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "1hpffdiy8x9zkq17ssdbjp8a744jfqpgck8f0r1dxnb44885lcmf";
+    };
+  };
 }
