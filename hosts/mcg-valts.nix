@@ -2,6 +2,7 @@
 {
   imports = suites.laptop ++ (with profiles; [
     docker
+    development.platformio
   ]);
 
   fileSystems."/" = {
