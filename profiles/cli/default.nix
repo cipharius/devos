@@ -37,7 +37,6 @@
     wget
     whois
     zip
-    zk
   ];
 
 }
