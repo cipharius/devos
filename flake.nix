@@ -129,7 +129,7 @@
                 cli
                 network.common
                 graphical.common
-                users.cipharius
+                users.valts
                 users.root
               ];
               laptop = workstation ++ [
@@ -140,7 +140,7 @@
         };
 
         home = {
-          imports = [ (digga.lib.importers.modules ./users/modules) ];
+          imports = [ (digga.lib.importExportableModules ./users/modules) ];
           externalModules = [ ];
           importables = rec {
             profiles = digga.lib.rakeLeaves ./users/profiles;
