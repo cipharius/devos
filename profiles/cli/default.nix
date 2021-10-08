@@ -32,8 +32,8 @@
     stack
     tig
     tree
+    unar
     units
-    unzip
     wget
     whois
     zip
