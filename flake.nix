@@ -131,6 +131,7 @@
                 graphical.common
                 users.valts
                 users.root
+                development.virtualisation
               ];
               laptop = workstation ++ [
                 profiles.laptop

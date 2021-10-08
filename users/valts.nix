@@ -17,7 +17,7 @@
   users.users.valts = {
     uid = 1000;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "docker" "libvirtd" ];
     passwordFile = "/run/secrets/valts";
   };
 }
