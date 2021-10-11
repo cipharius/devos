@@ -22,7 +22,6 @@
     paraview
     pavucontrol
     spotify
-    steam
     teams
     transmission-qt
     virt-manager

@@ -3,6 +3,7 @@
   imports = suites.laptop ++ (with profiles; [
     docker
     development.platformio
+    graphical.steam
   ]);
 
   fileSystems."/" = {
