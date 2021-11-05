@@ -35,9 +35,10 @@ in
         ] 10 "battery"
       ${wirelessConfigs}
       , Run StdinReader
+      , Run Com "sh" ["-c", "cat \"$HOME/CURRENT_TASK\""] "currentTask" 50
       ]
     , sepChar  = "%"
     , alignSep = "}{"
-    , template = "%StdinReader% }{ ${wirelessComps} | %battery%    <fc=#dfaf8f>%date%</fc>"
+    , template = "%StdinReader% } <fc=#dfaf8f>%currentTask%</fc> { ${wirelessComps} | %battery%    <fc=#dfaf8f>%date%</fc>"
     }
 ''
