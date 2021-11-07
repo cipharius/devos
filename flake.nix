@@ -126,7 +126,8 @@
               base = [ core users.nixos users.root ];
               workstation = [
                 core
-                cli
+                cli.common
+                cli.croc
                 network.common
                 graphical.common
                 users.valts
