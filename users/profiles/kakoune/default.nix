@@ -11,6 +11,7 @@
     })
 
     lf # For filetree script
+    universal-ctags # For ctags integration
   ];
 
   home.file = {
