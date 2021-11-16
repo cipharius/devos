@@ -4,7 +4,6 @@ channels: final: prev: {
 
   inherit (channels.latest)
     cachix
-    cargo
     deploy-rs
     dhall
     discord
