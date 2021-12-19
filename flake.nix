@@ -133,6 +133,7 @@
                 users.valts
                 users.root
                 development.virtualisation
+                development.arangodb
               ];
               laptop = workstation ++ [
                 profiles.laptop
