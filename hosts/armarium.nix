@@ -15,14 +15,14 @@
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = false;
   networking.interfaces.wlo1.useDHCP = false;
-  networking.interfaces.wlo1.ipv4.addresses = [ {
+  networking.interfaces.wlo1.ipv4.addresses = [{
     address = "192.168.8.10";
     prefixLength = 24;
-  } ];
+  }];
   networking.defaultGateway = "192.168.8.1";
   networking.nameservers = [
-    "194.8.2.2",
-    "9.9.9.9",
+    "194.8.2.2"
+    "9.9.9.9"
     "8.8.8.8"
   ];
 
