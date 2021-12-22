@@ -125,17 +125,38 @@
               base = [ core users.nixos users.root ];
               workstation = [
                 core
-                cli.common
-                cli.croc
-                network.common
-                graphical.common
+
                 users.valts
                 users.root
-                development.virtualisation
+
+                cli.common
+                cli.croc
+                cli.imagemagick
+                cli.openconnect
+                cli.pandoc
+
+                network.common
+                graphical.common
+
                 development.arangodb
+                development.ghc
+                development.python38
+                development.stack
+                development.virtualisation
               ];
               laptop = workstation ++ [
                 profiles.laptop
+              ];
+              server = [
+                core
+
+                users.root
+                users.valts
+
+                cli.common
+
+                network.common
+                network.ssh
               ];
             };
           };

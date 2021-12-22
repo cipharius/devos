@@ -1,8 +1,6 @@
 { suites, lib, profiles, ... }:
 {
-  imports = suites.laptop ++ (with profiles; [
-    network.ssh
-  ]);
+  imports = suites.server;
 
   fileSystems."/" = { device = "/dev/disk/by-label/nixos"; };
 

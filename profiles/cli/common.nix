@@ -1,42 +1,22 @@
-{ pkgs, ... }: {
-
-  # Dump of CLI packages without profiles
-  environment.systemPackages = with pkgs; [
-    ag
-    curl
-    dnsutils
-    dolt
-    file
-    fzf
-    ghc
-    graphviz
-    haskellPackages.neuron
-    hledger
-    htop
-    imagemagick
-    iw
-    jq
-    niv
-    nixpkgs-fmt
-    nix-prefetch
-    nix-top
-    nix-tree
-    openconnect
-    openssl
-    pandoc
-    patchelf
-    pwgen
-    python38
-    ripgrep
-    rsync
-    stack
-    tig
-    tree
-    unar
-    units
-    wget
-    whois
-    zip
+{ ... }: {
+  imports = [
+    ./dnsutils
+    ./file
+    ./fzf
+    ./htop
+    ./jq
+    ./nix-prefetch
+    ./nix-top
+    ./nix-tree
+    ./nixpkgs-fmt
+    ./openssl
+    ./patchelf
+    ./ripgrep
+    ./rsync
+    ./tig
+    ./tree
+    ./unar
+    ./wget
+    ./zip
   ];
-
 }
