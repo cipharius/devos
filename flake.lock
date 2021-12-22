@@ -83,6 +83,26 @@
         "type": "github"
       }
     },
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "latest"
+        ]
+      },
+      "locked": {
+        "lastModified": 1640117230,
+        "narHash": "sha256-W7LXeJavyIzNfNaoEsK65sEaCGqE9MVWvK0xSzNR4ls=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "5851d9613edf8b2279746c7e5b9faac55ff17e8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "deploy": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -432,6 +452,7 @@
           "blank"
         ],
         "bud": "bud",
+        "darwin": "darwin",
         "deploy": [
           "digga",
           "deploy"
