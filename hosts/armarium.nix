@@ -1,6 +1,8 @@
 { suites, lib, profiles, ... }:
 {
-  imports = suites.server;
+  imports = suites.server ++ (with profiles; [
+    server.personal-database
+  ]);
 
   fileSystems."/" = { device = "/dev/disk/by-label/nixos"; };
 
