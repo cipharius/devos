@@ -135,6 +135,8 @@
                 cli.openconnect
                 cli.pandoc
 
+                hardware.scanner
+
                 network.common
                 graphical.common
 

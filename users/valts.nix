@@ -16,7 +16,7 @@
 
   users.users.valts = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" "docker" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "docker" "libvirtd" "scanner" "lp" ];
     passwordFile = "/run/agenix/valts";
   };
 }
