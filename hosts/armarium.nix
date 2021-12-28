@@ -2,6 +2,7 @@
 {
   imports = suites.server ++ (with profiles; [
     server.personal-database
+    server.paperless-ng
   ]);
 
   fileSystems."/" = { device = "/dev/disk/by-label/nixos"; };
@@ -25,6 +26,15 @@
     "9.9.9.9"
     "8.8.8.8"
   ];
+
+  services.nginx.enable = true;
+  services.nginx.virtualHosts = {
+    localhost = {
+      locations."/" = {
+        proxyPass = "http://localhost:28981";
+      };
+    };
+  };
 
   time.timeZone = "Europe/Riga";
 
