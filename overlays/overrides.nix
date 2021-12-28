@@ -14,6 +14,7 @@ channels: final: prev: {
     rage
     signal-desktop
     starship
+    paperless-ng
     ;
 
 
