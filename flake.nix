@@ -9,6 +9,7 @@
     {
       nixos.url = "github:nixos/nixpkgs/release-21.05";
       latest.url = "github:nixos/nixpkgs/nixos-unstable";
+      bleeding-edge.url = "github:nixos/nixpkgs/master";
 
       digga.url = "github:divnix/digga";
       digga.inputs.nixpkgs.follows = "nixos";
@@ -84,6 +85,7 @@
               deploy.overlay
             ];
           };
+          bleeding-edge = {};
         };
 
         lib = import ./lib { lib = digga.lib // nixos.lib; };

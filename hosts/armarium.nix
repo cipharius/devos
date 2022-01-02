@@ -26,6 +26,7 @@
     "9.9.9.9"
     "8.8.8.8"
   ];
+  networking.firewall.allowedTCPPorts = [ 80 ];
 
   services.nginx.enable = true;
   services.nginx.virtualHosts = {
