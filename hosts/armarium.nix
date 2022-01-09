@@ -32,17 +32,10 @@
   networking.firewall.allowedTCPPorts = [ 80 ];
 
   services.nginx.enable = true;
-  services.nginx.additionalModules = with pkgs.nginxModules; [ subsFilter ];
   services.nginx.virtualHosts = {
     "accounting.lan" = {
       locations."/" = {
         proxyPass = "http://localhost:5000";
-        extraConfig = ''
-        proxy_set_header Accept-Encoding "";
-        proxy_redirect http://127.0.0.1:5000/ /;
-        subs_filter_types text/html;
-        subs_filter 127.0.0.1:5000 accounting.lan;
-        '';
       };
     };
     "paperless.lan" = {
@@ -56,6 +49,7 @@
       };
     };
   };
+  services.hledger-web.baseUrl = "http://accounting.lan";
 
   time.timeZone = "Europe/Riga";
 
