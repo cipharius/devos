@@ -3,7 +3,9 @@
   imports = suites.server ++ (with profiles; [
     server.personal-database
     server.paperless-ng
+    server.hledger-web
     hardware.scanner
+    cli.hledger
   ]);
 
   fileSystems."/" = { device = "/dev/disk/by-label/nixos"; };
@@ -31,6 +33,11 @@
 
   services.nginx.enable = true;
   services.nginx.virtualHosts = {
+    "accounting.lan" = {
+      locations."/" = {
+        proxyPass = "http://localhost:5000";
+      };
+    };
     "paperless.lan" = {
       locations."/" = {
         proxyPass = "http://localhost:28981";

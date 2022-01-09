@@ -1,3 +1,3 @@
 { pkgs, ... }: {
-  environment.systemPackages = [ pkgs.htop ];
+  environment.systemPackages = [ pkgs.hledger ];
 }
