@@ -15,5 +15,6 @@ in
 {
   "valts.age".publicKeys = allKeys;
   "root.age".publicKeys = allKeys;
+  "paperless-admin.age".publicKeys = allKeys;
 }
 

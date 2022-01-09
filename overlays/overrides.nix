@@ -14,8 +14,20 @@ channels: final: prev: {
     rage
     signal-desktop
     starship
+    ;
+
+  inherit (channels.bleeding-edge)
     paperless-ng
     ;
+
+  python3Packages = prev.python3Packages.override
+    (old: {
+        overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (_: _:
+        {
+            inherit (channels.bleeding-edge.python3Packages)
+              gunicorn;
+        });
+    });
 
 
   haskellPackages = prev.haskellPackages.override

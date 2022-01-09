@@ -3,6 +3,7 @@
   imports = suites.server ++ (with profiles; [
     server.personal-database
     server.paperless-ng
+    hardware.scanner
   ]);
 
   fileSystems."/" = { device = "/dev/disk/by-label/nixos"; };
@@ -26,12 +27,18 @@
     "9.9.9.9"
     "8.8.8.8"
   ];
+  networking.firewall.allowedTCPPorts = [ 80 ];
 
   services.nginx.enable = true;
   services.nginx.virtualHosts = {
-    localhost = {
+    "paperless.lan" = {
       locations."/" = {
         proxyPass = "http://localhost:28981";
+      };
+    };
+    "scanner.lan" = {
+      locations."/" = {
+        proxyPass = "http://localhost:8000";
       };
     };
   };
