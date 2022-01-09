@@ -136,6 +136,7 @@
                 cli.pandoc
 
                 hardware.scanner
+                hardware.printer
 
                 network.common
                 graphical.common
