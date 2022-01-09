@@ -31,9 +31,14 @@
 
   services.nginx.enable = true;
   services.nginx.virtualHosts = {
-    localhost = {
+    "paperless.lan" = {
       locations."/" = {
         proxyPass = "http://localhost:28981";
+      };
+    };
+    "scanner.lan" = {
+      locations."/" = {
+        proxyPass = "http://localhost:8000";
       };
     };
   };
