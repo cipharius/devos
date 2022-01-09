@@ -3,6 +3,7 @@
   imports = suites.server ++ (with profiles; [
     server.personal-database
     server.paperless-ng
+    hardware.scanner
   ]);
 
   fileSystems."/" = { device = "/dev/disk/by-label/nixos"; };
